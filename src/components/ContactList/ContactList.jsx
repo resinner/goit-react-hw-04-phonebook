@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
 import ContactItem from '../ContactItem';
+import { v4 as uuidv4 } from 'uuid';
+
 
 import styles from './ContactList.module.scss';
 
@@ -11,7 +13,8 @@ export default function ContactList({ contacts, onDeleteContact }) {
         <ContactItem
           contact={contact}
           onDeleteContact={onDeleteContact}
-          key={contact.id}
+          // key={contact.id}
+          key={uuidv4()}
         />
       ))}
     </ul>
@@ -23,7 +26,6 @@ export default function ContactList({ contacts, onDeleteContact }) {
 ContactList.propTypes = {
   contacts: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
       number: PropTypes.string.isRequired,
     }),

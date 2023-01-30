@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
 // import { Component } from 'react';
 import PropTypes from 'prop-types';
-import { v4 as uuidv4 } from 'uuid';
+// import { v4 as uuidv4 } from 'uuid';
 
 import styles from './ContactForm.module.scss';
 
 
-export default function ContactForm() {
+export default function ContactForm({onSubmit}) {
 
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
@@ -30,7 +30,7 @@ function hanldeChange(event) {
 
 function handleSubmit (event) {
     event.preventDefault();
-    const contact = { id: uuidv4(), name: name, number: number };
+    const contact = { name: name, number: number };
 
      onSubmit(contact);
 
@@ -40,7 +40,7 @@ function handleSubmit (event) {
 
 
   return (
-    <form className={styles.form} autoComplete="off" onSubmit={handleSubmit}>
+    <form className={styles.form} onSubmit={handleSubmit}>
       <label className={styles.label}>
         Name
         <input

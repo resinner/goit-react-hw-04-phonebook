@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import { nanoid } from 'nanoid';
 
 import Container from './components/Container';
 import ContactForm from './components/ContactForm';
@@ -10,24 +9,29 @@ import styles from './App.module.scss';
 
 document.title = 'Phonebook';
 
-// const prevContacts = [
-//       { id: 'id-1', name: 'Eden Clements', number: '645-17-79' },
-//       { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-//       { id: 'id-3', name: 'Rosie Simpson', number: '459-12-56' },
-// ];
+const prevContacts = [
+      { id: 'id-1', name: 'Eden Clements', number: '645-17-79' },
+      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+      { id: 'id-3', name: 'Rosie Simpson', number: '459-12-56' },
+];
 
   const parsedContacts = JSON.parse(localStorage.getItem('contacts'));
+ localStorage.setItem('contacts', JSON.stringify(parsedContacts));
 
 export default function App() {
   const [filter, setFilter] = useState('');
-  const [contacts, setContacts] = useState(() => parsedContacts ?? []);
+  const [contacts, setContacts] = useState(
+    () => parsedContacts ?? []
+  );
+
+useEffect(() => {
+  localStorage.setItem('contacts', JSON.stringify(prevContacts));
+}, [contacts]);
 
   useEffect(() => {
     localStorage.setItem('contacts', JSON.stringify(contacts));
-    // console.log('contacts', contacts);
   }, [contacts]);
 
-  //  id: nanoid(),
     //  Додає контакт
      function addContact({ name, number }) {
        const newContact = { name: name, number: number };
