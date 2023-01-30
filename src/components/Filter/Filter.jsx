@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './Filter.module.scss';
 
 // Приймає значення з поля фильтру та метод, що пише в стейт
-const Filter = ({ value, onChange }) => {
+export default function Filter({ value, onChange }) {
   return (
     <label className={styles.label}>
       Find contacts by name
@@ -29,5 +29,3 @@ Filter.propTypes = {
   value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
 };
-
-export default Filter;

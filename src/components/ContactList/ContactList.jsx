@@ -4,7 +4,7 @@ import ContactItem from '../ContactItem';
 import styles from './ContactList.module.scss';
 
 // Приймає всі контакти та прокидає далі метод для видалення контакту
-const ContactList = ({ contacts, onDeleteContact }) => {
+export default function ContactList({ contacts, onDeleteContact }) {
   return (
     <ul className={styles.list}>
       {contacts.map(contact => (
@@ -18,6 +18,8 @@ const ContactList = ({ contacts, onDeleteContact }) => {
   );
 };
 
+ 
+
 ContactList.propTypes = {
   contacts: PropTypes.arrayOf(
     PropTypes.shape({
@@ -28,5 +30,3 @@ ContactList.propTypes = {
   ),
   onDeleteContact: PropTypes.func.isRequired,
 };
-
-export default ContactList;

@@ -1,7 +1,7 @@
 import styles from './ContactItem.module.scss';
 
 // Приймає контакт та метод для видалення контакту
-const ContactItem = ({ contact, onDeleteContact }) => {
+export default function ContactItem({ contact, onDeleteContact }) {
   return (
     <li className={styles.item}>
       <span className={styles.name}>{contact.name}: </span>
@@ -18,5 +18,3 @@ const ContactItem = ({ contact, onDeleteContact }) => {
     </li>
   );
 };
-
-export default ContactItem;
